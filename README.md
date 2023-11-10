@@ -149,6 +149,19 @@ Each output file is prefixed with the letter corresponding to each network.
 * ```*_dual.dat```: associated dual nodes
 * ```*_aux.dat```: geometry and additional information
 
+The format of the aux file is:
+```
+800                                            # Number of Nodes
+3         3                                    # Maximum connections to the net, Maximum connections to the dual
+2DE                                            # Coordination environment, first character dimensionality
+34.641016           30.000000                  # Periodic Boundaries in x, y
+0.028868            0.033333                   # Reciprocal Periodic Boundaries in x, y
+
+```
+For all other files, the general format is for line number n, the data contained is for node (n-1)
+Where applicable, connections are listed in a clockwise format.  This feature is relied on when modifying the code.
+
+
 Unless otherwise selected in the input file, only the final network will be written out.
 Intermediate structures will be prefixed with a temperature and step index.
 
@@ -166,10 +179,14 @@ The following analysis files are produced for each sample configuration:
 * ```*_areas.out```: sum of areas for each ring size; sum of squared areas for each ring size
 * ```*_ematrix.out```: joint degree distribution
 * ```*_cluster_*.out```: um, something about maximum number of connected nodes
+The frequency at which these are written can be controlled within the input file
+
 
 The following analysis files are produced with data from all sample configurations:
 
 * ```*_geomhist.out```: histograms of lengths and angles
+
+
 
 #### Log file
 
